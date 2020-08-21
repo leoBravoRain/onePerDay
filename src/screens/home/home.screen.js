@@ -77,7 +77,7 @@ class Home extends React.Component {
 
         // initial states
         this.state = {
-            loading: false,
+            loading: true,
             workshopsByCategory: null,
             garbagesPerDay: [],
             // email: "",
@@ -139,6 +139,8 @@ class Home extends React.Component {
                             get_garbages: true,
                             // update garbages
                             garbagesPerDay: garbages,
+
+                            loading: false,
 
                         },
                         
@@ -212,6 +214,8 @@ class Home extends React.Component {
 
                                                 </Typography>
                                                <img
+                                                    width = {200}
+                                                    height = {200}
                                                     src = {item.image}
                                                />
 

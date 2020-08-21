@@ -177,6 +177,19 @@ class Login extends React.Component {
 
                                 elevation={5}
                             >
+
+                                <Typography variant="h6" component="h6">
+
+                                    Welcome to OneGarbagePerDay
+ 
+                                </Typography>
+
+                                <Typography variant="body2" component="p">
+
+                                    This is a tool to track your progress helping to the world to keep clean and healthy. Here you can track your progress in the "One per day" challenge, in which you pick up one garbage per day of your city! Let's help our planet together!
+ 
+                                </Typography>
+
                                 <TextField
                                     id="standard-uncontrolled"
                                     label="Email"
@@ -196,9 +209,30 @@ class Login extends React.Component {
                                 />
 
                                 <Button align="center" variant="contained" color="primary" onClick={this.on_submit}>
-                                    Ingresar
+                                    Login
                                 </Button>
 
+                            </Paper>
+
+                            {/* box to message of register */}
+                            <Paper
+                                style = {{
+                                    display: "flex",
+                                    flexDirection: "column"
+                                }}
+                            >
+                                We are currently testing this tool to keep track of your help to get a better world! If you want to register, please type your email in the next form and we will send you more information!
+
+                                <Button
+                                    align="center" variant="contained" color="primary"
+                                    onClick = {() => {
+
+                                        // redirect
+                                        window.location.replace("https://forms.gle/1aVeXmFEzNE7b2Sv8");
+                                    }}
+                                >
+                                    Request access to #OneGarbagePerDay
+                                </Button>
                             </Paper>
 
                         </Container>

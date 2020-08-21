@@ -349,7 +349,7 @@ class AddNewGarbage extends React.Component {
                                                     img.onload = () => {
 
                                                         // draw image
-                                                        ctx.drawImage(img, 0, 100, 300, 200)
+                                                        ctx.drawImage(img, 0, 150, 300, 200)
                                                         
                                                         // add text
                                                         ctx.font = "30px Verdana";
@@ -358,11 +358,26 @@ class AddNewGarbage extends React.Component {
                                                         // ctx.textAlign = "center";
                                                         ctx.fillText("#OneGarbagePerDay", 50, 50, 200);
 
+                                                        // add text: I am picking up one garbage per day from my city in order to help our planet to keep clean and healthy
+                                                        ctx.font = "10px Verdana";
+                                                        ctx.fillText("I am picking up one garbage per day from my city", 10, 90);
+                                                        ctx.fillText("in order to help our planet to keep clean and healthy", 10, 100);
+
+                                                        ctx.font = "12px Verdana";
+                                                        ctx.fillStyle = "red";
+                                                        ctx.fillText("This is the one I picked up today:", 50, 120);
+
                                                         // type of garbage
-                                                        ctx.fillText("Days picking up garbage: " + this.state.daysPickingUpGarbage, 10, 350, 200);
+                                                        ctx.font = "12px Verdana";
+                                                        ctx.fillStyle = "green";
+                                                        ctx.fillText("These are the days when ", 60, 390);
+                                                        ctx.fillText("I've been picking up trash: " + (this.state.daysPickingUpGarbage + 1), 60, 410);
 
                                                         // invitation
-                                                        ctx.fillText("Get into OneGarbagePerDay to track your progress !", 10, 450, 200);
+                                                        ctx.font = "11px Verdana";
+                                                        ctx.fillStyle = "black";
+                                                        ctx.fillText("If you want to join me, please go to", 40, 450);
+                                                        ctx.fillText("OneGarbagePerDay!", 70, 470);
 
                                                         
                                                     };
