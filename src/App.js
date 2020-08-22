@@ -28,6 +28,7 @@ import theme from './libraries/material-ui/theme';
 import Home from "./screens/home/home.screen";
 import Login from "./screens/login/login.screen";
 import AddNewGarbage from "./screens/addNewGarbage/addNewGarbage.screen";
+import Prizes from "./screens/prizes/prizes.screen";
 
 // import WorkshopDetails from "./screens/workshopDetails/workshopDetails.screen";
 
@@ -93,6 +94,7 @@ class App extends Component {
           <Route path = "/" exact component = {Login} />
           <Route path="/home" exact component={Home} />
           <Route path="/addNewGarbage" exact component={AddNewGarbage} />
+          <Route path="/prizes" exact component={Prizes} />
 
           {/* <Route path="/workshopDetails" exact component={WorkshopDetails} /> */}
 

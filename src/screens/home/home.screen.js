@@ -200,6 +200,13 @@ class Home extends React.Component {
                                     Add new one
                                 </Button>
 
+                                {/* add new garbage */}
+                                <Button variant="contained" color="primary"
+                                    onClick={() => this.props.history.push("/prizes")}
+                                >
+                                    Check your prizes!
+                                </Button>
+
 
                                 {/* collection of iamges */}
 

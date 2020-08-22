@@ -16,7 +16,10 @@ import {
     Container,
     Button,
     Typography,
-    CircularProgress
+    CircularProgress,
+    Select,
+    MenuItem,
+    InputLabel,
 } from '@material-ui/core';
 
 // import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
@@ -79,6 +82,23 @@ import firebase from "firebase";
 
 // ];
 
+// define language
+const imageTextLanguages = [
+    "English",
+    "Spanish",
+];
+
+// garbage types
+const garbageTypes = [
+    "other",
+    "plastic",
+    "paper/card",
+    "tin/metal",
+    "ceramic/glass",
+    "organic",
+    "textile",
+]
+
 class AddNewGarbage extends React.Component {
 
     // constructor
@@ -92,6 +112,13 @@ class AddNewGarbage extends React.Component {
             loading: false,
             image: null,
             daysPickingUpGarbage: -1,
+
+            // language to share image
+            imageTextLanguage: 0,
+
+            // garbage type
+            garbageType: 0,
+            
             // workshopsByCategory: null,
             // email: "",
             // password: "",
@@ -184,6 +211,7 @@ class AddNewGarbage extends React.Component {
                     // add url of image
                     image: downloadURL,
                     date: firebase.firestore.Timestamp.now(),
+                    garbageType: garbageTypes[this.state.garbageType],
 
                 }).then(ref => {
 
@@ -291,18 +319,72 @@ class AddNewGarbage extends React.Component {
                                     Add new garbage
  
                                 </Typography>
+                              
 
-                                {/* type of garbage
-                                <TextField
-                                    label="Type of garbage" 
-                                />                                 */}
+                                {/* type of garbage */}
+                                <InputLabel>
+                                    Garbage type
+                                </InputLabel>
+                                <Select
+                                    // labelId="demo-simple-select-label"
+                                    // id="demo-simple-select"
+                                    placeholder="iojasd"
+                                    value={this.state.garbageType}
+                                    onChange={(e) => {
+                                        this.setState({
+                                            garbageType: e.target.value,
+                                        });
+                                    }}
+                                >
+                                    {
+                                        garbageTypes.map((item, index) => {
+
+                                            return (
+
+                                                <MenuItem value={index} key={index}>
+                                                    {item}
+                                                </MenuItem>
+                                            )
+
+                                        })
+                                    }
+                                </Select> 
+
+                                {/* image to share language */}
+                                <Typography variant="body2" component="p">
+                                    Image's text language:
+                                        </Typography>
+
+                                <Select
+                                    // labelId="demo-simple-select-label"
+                                    // id="demo-simple-select"
+                                    value={this.state.imageTextLanguage}
+                                    onChange={(e) => {
+                                        this.setState({
+                                            imageTextLanguage: e.target.value,
+                                        });
+                                    }}
+                                >
+                                    {
+                                        imageTextLanguages.map((item, index) => {
+
+                                            return (
+
+                                                <MenuItem value={index} key={index}>
+                                                    {item}
+                                                </MenuItem>
+                                            )
+
+                                        })
+                                    }
+                                </Select>
 
                                 {/* photo */}
                                 <Button
                                     variant="contained"
                                     component="label"
                                 >
-                                    Upload File
+                                    Upload photo
 
                                     <input
                                         id = "file_input"
@@ -330,7 +412,7 @@ class AddNewGarbage extends React.Component {
 
                                             reader.onload =  (e) => {
 
-                                                console.log("reader ready!");
+                                                // console.log("reader ready!");
 
                                                 if (e.target.readyState == FileReader.DONE) {
 
@@ -349,35 +431,84 @@ class AddNewGarbage extends React.Component {
                                                     img.onload = () => {
 
                                                         // draw image
-                                                        ctx.drawImage(img, 0, 150, 300, 200)
+                                                        ctx.drawImage(img, 0, 130, 300, 200)
                                                         
+                                                        // define text based on language
+                                                        var title = "";
+                                                        var explanation_1 = "";
+                                                        var explanation_2 = "";
+                                                        var today = "";
+                                                        var days_1 = "";
+                                                        var days_2 = "";
+                                                        var join_1 = "";
+                                                        var join_2 = "";
+                                                        var garbageType = "";
+
+                                                        // English
+                                                        if (this.state.imageTextLanguage == 0) {
+
+                                                            title = "#OneGarbagePerDay";
+                                                            explanation_1 = "I am picking up one garbage per day from my city";
+                                                            explanation_2 = "in order to help our planet to keep clean and healthy";
+                                                            today = "This is the one I picked up today:";
+                                                            days_1 = "These are the days when ";
+                                                            days_2 = "I've been picking up trash: ";
+                                                            join_1 = "If you want to join me, please go to";
+                                                            join_2 = "OneGarbagePerDay!";
+                                                            garbageType = "Type of garbage: " + garbageTypes[this.state.garbageType];
+                                                            
+                                                        }
+
+                                                        // spanish
+                                                        else if (this.state.imageTextLanguage == 1) {
+
+                                                            title = "#UnaBasuraPorDía";
+                                                            explanation_1 = "Estoy recogiendo una basura por día en mi ciudad";
+                                                            explanation_2 = "para poder mantener nuestro planeta limpio y saludable";
+                                                            today = "Esto recogí hoy día:";
+                                                            days_1 = "Estos son los días en que ";
+                                                            days_2 = "he estado recogiendo basura: ";
+                                                            join_1 = "Si quieres unirte, visita";
+                                                            join_2 = "UnaBasuraPorDía!";
+
+                                                            // transalte type of garbage name
+                                                            garbageType = "Tipo de basura: " + garbageTypes[this.state.garbageType];
+
+                                                        }
+
                                                         // add text
                                                         ctx.font = "30px Verdana";
                                                         ctx.fillStyle = "black";
                                                         ctx.backgroundColor = "white"
                                                         // ctx.textAlign = "center";
-                                                        ctx.fillText("#OneGarbagePerDay", 50, 50, 200);
+                                                        ctx.fillText(title, 50, 50, 200);
 
                                                         // add text: I am picking up one garbage per day from my city in order to help our planet to keep clean and healthy
                                                         ctx.font = "10px Verdana";
-                                                        ctx.fillText("I am picking up one garbage per day from my city", 10, 90);
-                                                        ctx.fillText("in order to help our planet to keep clean and healthy", 10, 100);
+                                                        ctx.fillText(explanation_1, 10, 90);
+                                                        ctx.fillText(explanation_2, 10, 100);
 
+                                                        // today's message
                                                         ctx.font = "12px Verdana";
                                                         ctx.fillStyle = "red";
-                                                        ctx.fillText("This is the one I picked up today:", 50, 120);
+                                                        ctx.fillText(today, 50, 120);
 
                                                         // type of garbage
                                                         ctx.font = "12px Verdana";
+                                                        ctx.fillStyle = "black";
+                                                        ctx.fillText(garbageType, 50, 360);
+
+                                                        // days picking up garbage
+                                                        ctx.font = "12px Verdana";
                                                         ctx.fillStyle = "green";
-                                                        ctx.fillText("These are the days when ", 60, 390);
-                                                        ctx.fillText("I've been picking up trash: " + (this.state.daysPickingUpGarbage + 1), 60, 410);
+                                                        ctx.fillText(days_1, 60, 390);
+                                                        ctx.fillText(days_2 + (this.state.daysPickingUpGarbage + 1), 60, 410);
 
                                                         // invitation
                                                         ctx.font = "11px Verdana";
                                                         ctx.fillStyle = "black";
-                                                        ctx.fillText("If you want to join me, please go to", 40, 450);
-                                                        ctx.fillText("OneGarbagePerDay!", 70, 470);
+                                                        ctx.fillText(join_1, 40, 450);
+                                                        ctx.fillText(join_2, 70, 470);
 
                                                         
                                                     };
@@ -391,6 +522,7 @@ class AddNewGarbage extends React.Component {
                                         }}
                                     />
                                 </Button>
+
 
                                 {/* add new garbage */}
                                 <Button variant="contained" color="primary"
@@ -414,17 +546,33 @@ class AddNewGarbage extends React.Component {
                                         null
 
                                 }
+
+                                {/* Image to share */}
                                 <Container>
                                     
-                                    <p>
+                                    {/* title */}
+                                    <Typography variant="h6" component="h6" style={{ textAlign: "center", }}>
                                         Image to share
-                                    </p>
+                                    </Typography>
 
-                                    <canvas 
-                                        id="canvaImage"
-                                        width = {300}
-                                        height = {500}    
-                                    />
+                                    {/* select language */}
+
+                                    
+                                
+
+                                    {/* canva image to share */}
+
+                                    <Container>
+
+                                        <canvas 
+                                            id="canvaImage"
+                                            width = {300}
+                                            height = {500}    
+                                        />
+                                        
+                                    </Container>
+
+
 
                                 </Container>
 
