@@ -401,6 +401,9 @@ class AddNewGarbage extends React.Component {
 
                                             const img = new Image();
 
+                                            img.crossOrigin = "anonymous";
+                                            // crossorigin = "anonymous"
+
                                             // img.style.width = "10px";
 
                                             var reader = new FileReader();
@@ -430,85 +433,114 @@ class AddNewGarbage extends React.Component {
                                                     // draw image
                                                     img.onload = () => {
 
-                                                        // draw image
-                                                        ctx.drawImage(img, 0, 130, 300, 200)
+                                                        // draw user image
+                                                        // ctx.drawImage(img, 0, 130, 300, 200)
                                                         
-                                                        // define text based on language
-                                                        var title = "";
-                                                        var explanation_1 = "";
-                                                        var explanation_2 = "";
-                                                        var today = "";
-                                                        var days_1 = "";
-                                                        var days_2 = "";
-                                                        var join_1 = "";
-                                                        var join_2 = "";
-                                                        var garbageType = "";
 
-                                                        // English
-                                                        if (this.state.imageTextLanguage == 0) {
+                                                        // draw design image
+                                                        var designImage = new Image();
 
-                                                            title = "#OneGarbagePerDay";
-                                                            explanation_1 = "I am picking up one garbage per day from my city";
-                                                            explanation_2 = "in order to help our planet to keep clean and healthy";
-                                                            today = "This is the one I picked up today:";
-                                                            days_1 = "These are the days when ";
-                                                            days_2 = "I've been picking up trash: ";
-                                                            join_1 = "If you want to join me, please go to";
-                                                            join_2 = "OneGarbagePerDay!";
-                                                            garbageType = "Type of garbage: " + garbageTypes[this.state.garbageType];
+                                                        // design image
+                                                        designImage.src = "https://firebasestorage.googleapis.com/v0/b/oneperday-1758a.appspot.com/o/website%2FonePerDayDesign.png?alt=media&token=a97a7667-c8ec-45bb-8d80-d8fda84263bf";
+                                                        
+                                                        designImage.crossOrigin = "anonymous";
+
+                                                        // load image
+                                                        designImage.onload = () => {
+
+                                                            // draw design image
+                                                            ctx.drawImage(designImage, 0, 0, 400, 500);
+
+                                                            // draw user image
+                                                            ctx.drawImage(img, 50, 175, 300, 150)
+
+                                                            // garbage type
+                                                            ctx.font = "20px Verdana";
+                                                            ctx.fillStyle = "white";
+                                                            ctx.fillText(garbageTypes[this.state.garbageType], 250, 350);
+
+                                                            // days
+                                                            ctx.font = "20px Verdana";
+                                                            ctx.fillStyle = "white";
+                                                            ctx.fillText(this.state.daysPickingUpGarbage, 193, 415);
+                                                        };
+
+                                                        // // define text based on language
+                                                        // var title = "";
+                                                        // var explanation_1 = "";
+                                                        // var explanation_2 = "";
+                                                        // var today = "";
+                                                        // var days_1 = "";
+                                                        // var days_2 = "";
+                                                        // var join_1 = "";
+                                                        // var join_2 = "";
+                                                        // var garbageType = "";
+
+                                                        // // English
+                                                        // if (this.state.imageTextLanguage == 0) {
+
+                                                        //     title = "#OneGarbagePerDay";
+                                                        //     explanation_1 = "I am picking up one garbage per day from my city";
+                                                        //     explanation_2 = "in order to help our planet to keep clean and healthy";
+                                                        //     today = "This is the one I picked up today:";
+                                                        //     days_1 = "These are the days when ";
+                                                        //     days_2 = "I've been picking up trash: ";
+                                                        //     join_1 = "If you want to join me, please go to";
+                                                        //     join_2 = "OneGarbagePerDay!";
+                                                        //     garbageType = "Type of garbage: " + garbageTypes[this.state.garbageType];
                                                             
-                                                        }
+                                                        // }
 
-                                                        // spanish
-                                                        else if (this.state.imageTextLanguage == 1) {
+                                                        // // spanish
+                                                        // else if (this.state.imageTextLanguage == 1) {
 
-                                                            title = "#UnaBasuraPorDía";
-                                                            explanation_1 = "Estoy recogiendo una basura por día en mi ciudad";
-                                                            explanation_2 = "para poder mantener nuestro planeta limpio y saludable";
-                                                            today = "Esto recogí hoy día:";
-                                                            days_1 = "Estos son los días en que ";
-                                                            days_2 = "he estado recogiendo basura: ";
-                                                            join_1 = "Si quieres unirte, visita";
-                                                            join_2 = "UnaBasuraPorDía!";
+                                                        //     title = "#UnaBasuraPorDía";
+                                                        //     explanation_1 = "Estoy recogiendo una basura por día en mi ciudad";
+                                                        //     explanation_2 = "para poder mantener nuestro planeta limpio y saludable";
+                                                        //     today = "Esto recogí hoy día:";
+                                                        //     days_1 = "Estos son los días en que ";
+                                                        //     days_2 = "he estado recogiendo basura: ";
+                                                        //     join_1 = "Si quieres unirte, visita";
+                                                        //     join_2 = "UnaBasuraPorDía!";
 
-                                                            // transalte type of garbage name
-                                                            garbageType = "Tipo de basura: " + garbageTypes[this.state.garbageType];
+                                                        //     // transalte type of garbage name
+                                                        //     garbageType = "Tipo de basura: " + garbageTypes[this.state.garbageType];
 
-                                                        }
+                                                        // }
 
-                                                        // add text
-                                                        ctx.font = "30px Verdana";
-                                                        ctx.fillStyle = "black";
-                                                        ctx.backgroundColor = "white"
-                                                        // ctx.textAlign = "center";
-                                                        ctx.fillText(title, 50, 50, 200);
+                                                        // // add text
+                                                        // ctx.font = "30px Verdana";
+                                                        // ctx.fillStyle = "black";
+                                                        // ctx.backgroundColor = "white"
+                                                        // // ctx.textAlign = "center";
+                                                        // ctx.fillText(title, 50, 50, 200);
 
-                                                        // add text: I am picking up one garbage per day from my city in order to help our planet to keep clean and healthy
-                                                        ctx.font = "10px Verdana";
-                                                        ctx.fillText(explanation_1, 10, 90);
-                                                        ctx.fillText(explanation_2, 10, 100);
+                                                        // // add text: I am picking up one garbage per day from my city in order to help our planet to keep clean and healthy
+                                                        // ctx.font = "10px Verdana";
+                                                        // ctx.fillText(explanation_1, 10, 90);
+                                                        // ctx.fillText(explanation_2, 10, 100);
 
-                                                        // today's message
-                                                        ctx.font = "12px Verdana";
-                                                        ctx.fillStyle = "red";
-                                                        ctx.fillText(today, 50, 120);
+                                                        // // today's message
+                                                        // ctx.font = "12px Verdana";
+                                                        // ctx.fillStyle = "red";
+                                                        // ctx.fillText(today, 50, 120);
 
-                                                        // type of garbage
-                                                        ctx.font = "12px Verdana";
-                                                        ctx.fillStyle = "black";
-                                                        ctx.fillText(garbageType, 50, 360);
+                                                        // // type of garbage
+                                                        // ctx.font = "12px Verdana";
+                                                        // ctx.fillStyle = "black";
+                                                        // ctx.fillText(garbageType, 50, 360);
 
-                                                        // days picking up garbage
-                                                        ctx.font = "12px Verdana";
-                                                        ctx.fillStyle = "green";
-                                                        ctx.fillText(days_1, 60, 390);
-                                                        ctx.fillText(days_2 + (this.state.daysPickingUpGarbage + 1), 60, 410);
+                                                        // // days picking up garbage
+                                                        // ctx.font = "12px Verdana";
+                                                        // ctx.fillStyle = "green";
+                                                        // ctx.fillText(days_1, 60, 390);
+                                                        // ctx.fillText(days_2 + (this.state.daysPickingUpGarbage + 1), 60, 410);
 
-                                                        // invitation
-                                                        ctx.font = "11px Verdana";
-                                                        ctx.fillStyle = "black";
-                                                        ctx.fillText(join_1, 40, 450);
-                                                        ctx.fillText(join_2, 70, 470);
+                                                        // // invitation
+                                                        // ctx.font = "11px Verdana";
+                                                        // ctx.fillStyle = "black";
+                                                        // ctx.fillText(join_1, 40, 450);
+                                                        // ctx.fillText(join_2, 70, 470);
 
                                                         
                                                     };
@@ -566,7 +598,7 @@ class AddNewGarbage extends React.Component {
 
                                         <canvas 
                                             id="canvaImage"
-                                            width = {300}
+                                            width = {400}
                                             height = {500}    
                                         />
                                         
