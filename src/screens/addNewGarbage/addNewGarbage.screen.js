@@ -230,10 +230,10 @@ class AddNewGarbage extends React.Component {
                     // var img = canvas.toDataURL("image/png");
                     // document.write('<img src="' + img + '"/>');
 
-                    var link = document.createElement('a');
-                    link.download = 'onPerDay.png';
-                    link.href = document.getElementById('canvaImage').toDataURL()
-                    link.click();
+                    // var link = document.createElement('a');
+                    // link.download = 'onPerDay.png';
+                    // link.href = document.getElementById('canvaImage').toDataURL()
+                    // link.click();
 
                     // this.context.router.history.push(`/home`)
                     alert("Saved successfully! Share in your social networks to motivate more friends to help the planet!");
@@ -571,7 +571,7 @@ class AddNewGarbage extends React.Component {
 
                                     }}
                                 >
-                                    Save and Share
+                                    Save
                                 </Button>
 
                                 {this.state.loading 
@@ -595,7 +595,7 @@ class AddNewGarbage extends React.Component {
                                     </Typography>
 
                                     <Typography variant="h6" component="h6" style={{ textAlign: "center", }}>
-                                        Take an screenshot (We are having some problems to share the photo! Sorry!)
+                                        If you want to share this image, please take it an screenshot (We are having some problems to share the photo! Sorry!)
                                     </Typography>
 
                                     {/* select language */}
