@@ -39,6 +39,9 @@ import {
 
 import firebase from "firebase";
 
+// load image
+// import imageDesign from '../../static/images/oneGarbagePerDay.png';
+
 // // workshop mockup
 // const _workshops = [
 //     {
@@ -441,7 +444,10 @@ class AddNewGarbage extends React.Component {
                                                         var designImage = new Image();
 
                                                         // design image
-                                                        designImage.src = "https://firebasestorage.googleapis.com/v0/b/oneperday-1758a.appspot.com/o/website%2FonePerDayDesign.png?alt=media&token=a97a7667-c8ec-45bb-8d80-d8fda84263bf";
+                                                        // designImage.src = "https://firebasestorage.googleapis.com/v0/b/oneperday-1758a.appspot.com/o/website%2FonePerDayDesign.png?alt=media&token=a97a7667-c8ec-45bb-8d80-d8fda84263bf";
+                                                        // imageDesign.src = imageDesign.src;
+                                                        designImage.src = "https://static.iris.net.co/semana/upload/images/2020/4/7/662138_1.jpg";
+                                                        // designImage.src = img.src;
                                                         
                                                         designImage.crossOrigin = "anonymous";
 
@@ -597,6 +603,7 @@ class AddNewGarbage extends React.Component {
                                     <Container>
 
                                         <canvas 
+                                            // onload = {() => alert("oajsd")}
                                             id="canvaImage"
                                             width = {400}
                                             height = {500}    
