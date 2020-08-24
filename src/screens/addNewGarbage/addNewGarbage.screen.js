@@ -469,7 +469,7 @@ class AddNewGarbage extends React.Component {
                                                             // days
                                                             ctx.font = "20px Verdana";
                                                             ctx.fillStyle = "white";
-                                                            ctx.fillText(this.state.daysPickingUpGarbage, 193, 415);
+                                                            ctx.fillText(this.state.daysPickingUpGarbage + 1, 193, 415);
                                                         };
 
                                                         // // define text based on language
@@ -590,8 +590,12 @@ class AddNewGarbage extends React.Component {
                                 <Container>
                                     
                                     {/* title */}
-                                    <Typography variant="h6" component="h6" style={{ textAlign: "center", }}>
+                                    <Typography variant="h4" component="h4" style={{ textAlign: "center", }}>
                                         Image to share
+                                    </Typography>
+
+                                    <Typography variant="h6" component="h6" style={{ textAlign: "center", }}>
+                                        Take an screenshot (We are having some problems to share the photo! Sorry!)
                                     </Typography>
 
                                     {/* select language */}
