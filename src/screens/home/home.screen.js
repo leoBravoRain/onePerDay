@@ -95,7 +95,7 @@ class Home extends React.Component {
 
                 // console.log("user not logged");
 
-                this.props.history.push('/login');
+                this.props.history.push('/');
 
                 // console.log("aosjid");
 
@@ -207,7 +207,23 @@ class Home extends React.Component {
                                     Check your prizes!
                                 </Button>
 
+                                {/* sign out */}
+                                <Button variant="contained" color="secondary"
+                                    onClick={() => {
+                                        auth.signOut().then(function () {
+                                            // Sign-out successful.
+                                            this.props.history.push("/");
 
+                                        }).catch(function (error) {
+                                            // An error happened.
+                                        });
+                                    }}
+                                >
+                                    Logout
+                                </Button>
+
+                                
+                                
                                 {/* collection of iamges */}
 
                                 {

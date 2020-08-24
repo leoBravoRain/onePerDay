@@ -92,7 +92,26 @@ class Login extends React.Component {
         }
 
         this.on_submit = this.on_submit.bind(this);
+        this.on_register = this.on_register.bind(this);
 
+    }
+
+    on_register() {
+
+        const email = this.state.email.trim();
+        const password = this.state.password;
+
+        auth.createUserWithEmailAndPassword(email, password)
+
+            .then(res => {
+                alert("Registered successfully!");
+
+                this.props.history.push('/home');
+
+            })
+            .catch(e => {
+                alert(e);
+            })
     }
 
     // onsubmit form
@@ -208,13 +227,19 @@ class Login extends React.Component {
                                     value={this.state.password}
                                 />
 
+                                {/* login */}
                                 <Button align="center" variant="contained" color="primary" onClick={this.on_submit}>
                                     Login
                                 </Button>
 
+                                {/* register */}
+                                <Button align="center" variant="contained" color="secondary" onClick={this.on_register}>
+                                    Register (Enter your email and a password)
+                                </Button>
+
                             </Paper>
 
-                            {/* box to message of register */}
+                            {/* box to message of register
                             <Paper
                                 style = {{
                                     display: "flex",
@@ -233,7 +258,7 @@ class Login extends React.Component {
                                 >
                                     Request access to #OneGarbagePerDay
                                 </Button>
-                            </Paper>
+                            </Paper> */}
 
                         </Container>
 

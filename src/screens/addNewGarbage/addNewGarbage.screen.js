@@ -358,7 +358,7 @@ class AddNewGarbage extends React.Component {
                                     Image's text language:
                                         </Typography>
 
-                                <Select
+                                {/* <Select
                                     // labelId="demo-simple-select-label"
                                     // id="demo-simple-select"
                                     value={this.state.imageTextLanguage}
@@ -380,7 +380,7 @@ class AddNewGarbage extends React.Component {
 
                                         })
                                     }
-                                </Select>
+                                </Select> */}
 
                                 {/* photo */}
                                 <Button
@@ -446,10 +446,11 @@ class AddNewGarbage extends React.Component {
                                                         // design image
                                                         // designImage.src = "https://firebasestorage.googleapis.com/v0/b/oneperday-1758a.appspot.com/o/website%2FonePerDayDesign.png?alt=media&token=a97a7667-c8ec-45bb-8d80-d8fda84263bf";
                                                         // imageDesign.src = imageDesign.src;
-                                                        designImage.src = "https://static.iris.net.co/semana/upload/images/2020/4/7/662138_1.jpg";
+                                                        // designImage.src = "https://static.iris.net.co/semana/upload/images/2020/4/7/662138_1.jpg";
+                                                        designImage.src = "https://github.com/leoBravoRain/onePerDay/blob/master/onePerDayDesign.png?raw=true";
                                                         // designImage.src = img.src;
                                                         
-                                                        designImage.crossOrigin = "anonymous";
+                                                        // designImage.crossOrigin = "anonymous";
 
                                                         // load image
                                                         designImage.onload = () => {
